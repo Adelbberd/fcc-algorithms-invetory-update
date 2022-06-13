@@ -1,4 +1,4 @@
-function updateInventory(arr1, arr2) {
+function arrToObject(arr1, arr2) {
 	let curInvObj = Object.assign(
 		...arr1.map((currElem) => {
 			return { [currElem[1]]: currElem[0] };
@@ -10,6 +10,11 @@ function updateInventory(arr1, arr2) {
 			return { [currElem[1]]: currElem[0] };
 		})
 	);
+	return [curInvObj, newInvObj];
+}
+
+function updateInventory(arr1, arr2) {
+	let [curInvObj, newInvObj] = arrToObject(arr1, arr2);
 
 	for (let key in newInvObj) {
 		if (curInvObj.hasOwnProperty(key)) {
